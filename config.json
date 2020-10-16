@@ -1,0 +1,11 @@
+{
+    "R" :{
+        "name": "R ggplot",
+        "packages": ["R", "rPackages.ggplot2"]
+    },
+    "python" :{
+        "name": "python",
+        "packages": ["python"]
+    }
+}
+
