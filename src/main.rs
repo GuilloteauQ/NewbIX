@@ -9,7 +9,7 @@ use clap::{App, Arg, SubCommand};
 use std::fs;
 
 fn main() {
-    let matches = App::new("NewbIX: the Nix template generator")
+    let matches = App::new("SIFA: the Nix template generator")
         .version("1.0")
         .author("Quentin Guilloteau")
         .about("Generates templates for nix files")

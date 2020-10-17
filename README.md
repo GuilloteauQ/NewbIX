@@ -1,4 +1,4 @@
-# NewbIX
+# SIFA
 A simple Nix script template generator
 
 I keep on forgetting how to write simple nix files.

@@ -27,7 +27,7 @@
 with import <nixpkgs> { };
 
 rustPlatform.buildRustPackage rec {
-  name = "newbix";
+  name = "sifa";
   version = "1.0";
   src = ./.;
   buildInputs = [ ];
