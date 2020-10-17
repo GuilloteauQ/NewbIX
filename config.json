@@ -1,6 +1,6 @@
 {
     "R" :{
-        "name": "R ggplot",
+        "name": "Rggplot",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{

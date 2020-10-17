@@ -15,23 +15,35 @@ impl NixShell {
         NixShell { name, packages }
     }
 
-    pub fn generate_file(&self, filename: String) {
-        let mut file = File::create(filename).unwrap();
-
+    pub fn generate_file(&self, filename: Option<String>) {
         let packages_string: String = self.packages.join("\n\t\t");
+        if let Some(filename) = filename {
+            let mut file = File::create(filename).unwrap();
 
-        write!(
-            &mut file,
-            "with import <nixpkgs> {{}};\n\
-            stdenv.mkDerivation {{\n\
-                \tname = \"{}\";\n\
-                \tbuildInputs = [\n\
-                \t\t{}\n\
-                \t];\n\
-            }}",
-            self.name, packages_string
-        )
-        .unwrap();
+            write!(
+                &mut file,
+                "with import <nixpkgs> {{}};\n\
+                stdenv.mkDerivation {{\n\
+                    \tname = \"{}\";\n\
+                    \tbuildInputs = [\n\
+                    \t\t{}\n\
+                    \t];\n\
+                }}",
+                self.name, packages_string
+            )
+            .unwrap();
+        } else {
+            println!(
+                "with import <nixpkgs> {{}};\n\
+                stdenv.mkDerivation {{\n\
+                    \tname = \"{}\";\n\
+                    \tbuildInputs = [\n\
+                    \t\t{}\n\
+                    \t];\n\
+                }}",
+                self.name, packages_string
+            );
+        }
     }
 }
 
