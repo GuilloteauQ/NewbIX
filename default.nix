@@ -8,7 +8,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs = [ cargo ];
 
   checkPhase = "";
-  cargoSha256 = "sha256:0ilva42mnqkbpwp646zwrahlpnkfr3q4b7xcjyi2zwgsw6fqbdcx";
+  cargoSha256 = "sha256:0z1m63xi0fll1gg2x7ynykfis8n3zydwavf9pjxzcsh6c8pa8i77";
 
 }
 
