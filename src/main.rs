@@ -5,6 +5,7 @@ mod templates;
 use crate::config::*;
 use crate::templates::nix_shell::NixShell;
 use clap::{App, Arg};
+use dirs::home_dir;
 use std::fs;
 
 fn main() {
@@ -21,8 +22,9 @@ fn main() {
                 .help("Path to the configuration file (default: ~/.sifa.json)"),
         )
         .get_matches();
+    let default_config_file = format!("{}/.sifa.json", home_dir().unwrap().to_str().unwrap());
 
-    let filename = matches.value_of("config").unwrap_or("~/.sifa.json");
+    let filename = matches.value_of("config").unwrap_or(&default_config_file);
     let contents =
         fs::read_to_string(filename).expect("Something went wrong reading the config file");
 
