@@ -22,7 +22,7 @@ fn main() {
         )
         .get_matches();
 
-    let filename = matches.value_of("config").unwrap_or("config.json");
+    let filename = matches.value_of("config").unwrap_or("~/.sifa.json");
     let contents =
         fs::read_to_string(filename).expect("Something went wrong reading the config file");
 
