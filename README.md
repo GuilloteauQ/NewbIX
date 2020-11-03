@@ -63,12 +63,12 @@ We store those in a `json` file as follows:
 {
     "R" :{
         "name": "Rggplot",
-        "interpretor: "Rscript",
+        "interpretor": "Rscript",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{
         "name": "python",
-        "interpretor: "python",
+        "interpretor": "python",
         "packages": ["python"]
     }
 }
