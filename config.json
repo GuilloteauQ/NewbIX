@@ -1,10 +1,12 @@
 {
     "R" :{
         "name": "Rggplot",
+        "interpretor": "Rscript",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{
         "name": "python",
+        "interpretor": "python",
         "packages": ["python"]
     }
 }

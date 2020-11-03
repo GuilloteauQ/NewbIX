@@ -24,7 +24,7 @@ We can use it to quickly enter a shell.
 In this example we load our `python` profile.
 
 ```bash
-nix-shell -E "$(sifa python)"
+nix-shell -E "$(sifa shell python)"
 ```
 
 ### Long time `nix-shell`
@@ -32,8 +32,23 @@ nix-shell -E "$(sifa python)"
 For shells that you will come back to, you can simply redirect the output of `sifa` in a file
 
 ```bash
-sifa python > shell.nix
+sifa shell python > shell.nix
 nix-shell
+```
+
+### Headers
+
+You can generate `#!` headers:
+
+```bash
+sifa header R > main.R
+```
+
+main.R:
+
+```R
+#!/usr/bin/env nix-shell
+#! nix-shell -i Rscript -p R -p rPackages.ggplot2
 ```
 
 ## Profiles
@@ -48,10 +63,12 @@ We store those in a `json` file as follows:
 {
     "R" :{
         "name": "Rggplot",
+        "interpretor: "Rscript",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{
         "name": "python",
+        "interpretor: "python",
         "packages": ["python"]
     }
 }
