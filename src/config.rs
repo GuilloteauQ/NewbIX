@@ -5,7 +5,7 @@ pub struct Preference {
     #[serde(default)]
     pub name: String,
     #[serde(default)]
-    pub interpretor: String,
+    pub interpreter: String,
     #[serde(default)]
     #[serde(alias = "shellHook")]
     pub shell_hook: String,

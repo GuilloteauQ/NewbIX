@@ -2,33 +2,33 @@ use std::fmt;
 
 use crate::config::Preference;
 
-/// Template for a shell.nix
+/// Template for a header for nix-shell
 
 pub struct NixHeader {
-    interpretor: String,
+    interpreter: String,
     packages: Vec<String>,
 }
 
-impl NixHeader {
-    pub fn new(interpretor: String, packages: Vec<String>) -> Self {
-        NixHeader {
-            interpretor,
-            packages,
-        }
-    }
-}
+// impl NixHeader {
+//     pub fn new(interpretor: String, packages: Vec<String>) -> Self {
+//         NixHeader {
+//             interpretor,
+//             packages,
+//         }
+//     }
+// }
 
 impl From<Option<Preference>> for NixHeader {
     fn from(pref: Option<Preference>) -> Self {
         if pref.is_none() {
             NixHeader {
-                interpretor: "bash".to_string(),
+                interpreter: "bash".to_string(),
                 packages: vec![],
             }
         } else {
             let pref = pref.unwrap();
             NixHeader {
-                interpretor: pref.interpretor,
+                interpreter: pref.interpreter,
                 packages: pref.packages,
             }
         }
@@ -40,15 +40,15 @@ impl fmt::Display for NixHeader {
         if self.packages.len() == 0 {
             write!(
                 f,
-                "#!/usr/bin/env nix-shell\n#! nix-shell -i {}",
-                self.interpretor
+                "#! /usr/bin/env nix-shell\n#! nix-shell -i {}",
+                self.interpreter
             )
         } else {
-            let packages_string: String = self.packages.join(" -p ");
+            let packages_string: String = format!("-p {}", self.packages.join(" "));
             write!(
                 f,
-                "#!/usr/bin/env nix-shell\n#! nix-shell -i {} -p {}",
-                self.interpretor, packages_string
+                "#! /usr/bin/env nix-shell\n#! nix-shell -i {} {}",
+                self.interpreter, packages_string
             )
         }
     }

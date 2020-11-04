@@ -1,12 +1,13 @@
 {
     "R" :{
         "name": "Rggplot",
-        "interpretor": "Rscript",
+        "interpreter": "Rscript",
+        "shell_hook": "R --version",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{
         "name": "python",
-        "interpretor": "python",
+        "interpreter": "python",
         "packages": ["python"]
     }
 }
