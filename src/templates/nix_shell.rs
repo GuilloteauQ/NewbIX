@@ -38,7 +38,7 @@ impl fmt::Display for NixShell {
         write!(
             f,
             "with import <nixpkgs> {{}};\n\
-            stdenv.mkDerivation {{\n\
+            mkShell {{\n\
                 \tname = \"{}\";\n\
                 \tbuildInputs = [\n\
                 \t\t{}\n\
