@@ -47,8 +47,8 @@ sifa header R > main.R
 main.R:
 
 ```R
-#!/usr/bin/env nix-shell
-#! nix-shell -i Rscript -p R -p rPackages.ggplot2
+#! /usr/bin/env nix-shell
+#! nix-shell -i Rscript -p R rPackages.ggplot2
 ```
 
 ## Profiles
@@ -63,12 +63,13 @@ We store those in a `json` file as follows:
 {
     "R" :{
         "name": "Rggplot",
-        "interpretor": "Rscript",
+        "interpreter": "Rscript",
+        "shellHook": "R --version",
         "packages": ["R", "rPackages.ggplot2"]
     },
     "python" :{
         "name": "python",
-        "interpretor": "python",
+        "interpreter": "python",
         "packages": ["python"]
     }
 }
