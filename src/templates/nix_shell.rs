@@ -7,13 +7,14 @@ use crate::config::Preference;
 pub struct NixShell {
     name: String,
     packages: Vec<String>,
+    shell_hook: String,
 }
 
-impl NixShell {
-    pub fn new(name: String, packages: Vec<String>) -> Self {
-        NixShell { name, packages }
-    }
-}
+// impl NixShell {
+//     pub fn _new(name: String, packages: Vec<String>) -> Self {
+//         NixShell { name, packages }
+//     }
+// }
 
 impl From<Option<Preference>> for NixShell {
     fn from(pref: Option<Preference>) -> Self {
@@ -21,12 +22,14 @@ impl From<Option<Preference>> for NixShell {
             NixShell {
                 name: "shell".to_string(),
                 packages: vec![],
+                shell_hook: String::from(""),
             }
         } else {
             let pref = pref.unwrap();
             NixShell {
                 name: pref.name,
                 packages: pref.packages,
+                shell_hook: pref.shell_hook,
             }
         }
     }
@@ -43,8 +46,11 @@ impl fmt::Display for NixShell {
                 \tbuildInputs = [\n\
                 \t\t{}\n\
                 \t];\n\
+                \tshellHook = ''\n\
+                \t\t{}\n\
+                \t'';\n\
             }}",
-            self.name, packages_string
+            self.name, packages_string, self.shell_hook
         )
     }
 }
